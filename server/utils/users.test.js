@@ -23,4 +23,12 @@ describe('Users', () => {
 
     expect(newUsers.users).toEqual([user]);
   });
+
+  it ('should remove a user', () => {
+    let id = '1';
+
+    dummyUsers.removeUser(id);
+
+    expect(dummyUsers.users.length).toEqual(1);
+  })
 });

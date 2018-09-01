@@ -18,6 +18,14 @@ class Users {
     }
   }
 
+  getUser(id) {
+    let user = this.users.find((user) => user.id === id);
+    if (user) {
+      return user;
+    }
+    return false;
+  }
+
 }
 
 module.exports = {Users};
