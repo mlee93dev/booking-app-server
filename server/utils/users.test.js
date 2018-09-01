@@ -24,11 +24,21 @@ describe('Users', () => {
     expect(newUsers.users).toEqual([user]);
   });
 
-  it ('should remove a user', () => {
+  it('should remove a user', () => {
     let id = '1';
 
     dummyUsers.removeUser(id);
 
     expect(dummyUsers.users.length).toEqual(1);
+  });
+
+  it('should find a user', () => {
+    let testUser = {
+      id: '2'
+    };
+
+    let foundUser = dummyUsers.getUser(testUser.id);
+
+    expect(foundUser.id).toEqual(testUser.id);
   })
 });
