@@ -13,7 +13,11 @@ io.on('connection', (socket) => {
   console.log('New user connected');
 
   socket.on('getLocationDetails', (zipcode) => {
-    io.to(socket.id).emit('sentLocationDetails', generateLocationDetails(zipcode));
+    generateLocationDetails(zipcode)
+      .then(
+        
+      )
+    io.to(socket.id).emit('sentLocationDetails', );
   });
 });
 

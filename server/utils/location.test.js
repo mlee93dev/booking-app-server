@@ -13,5 +13,17 @@ describe('generateLocationDetails', () => {
           expect(locationDetails).toMatchObject({ city: 'Seattle', state: 'WA' });
         }
       );
-  })
+  });
+
+  it('should throw an address not found error', () => {
+    let zipcode = '99991';
+    let error;
+    generateLocationDetails(zipcode)
+      .catch(
+        (e) => {
+          error = e.message;
+          expect(error).toBe('Unable to find that address.');
+        }
+      );
+  });
 });
