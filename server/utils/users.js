@@ -4,6 +4,7 @@ class Users {
   }
 
   addUser(id) {
+    console.log(id);
     let user = {id};
     this.users.push(user);
     return user;

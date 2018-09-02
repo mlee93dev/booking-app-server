@@ -14,23 +14,8 @@ let users = new Users();
 io.on('connection', (socket) => {
   console.log('New user connected');
 
-  socket.on('visit', (callback) => {
-    users.removeUser(socket.id);
-    users.addUser(socket.id);
-
-    callback();
-  });
-
-  socket.on('disconnect', () => {
-    users.removeUser(socket.id);
-  })
-
-  socket.on('sendLocationDetails', (zipcode) => {
-    let user = users.getUser(socket.id);
-
-    if (user) {
-      io.to(user.client).emit('newLocationDetails', generateLocationDetails(zipcode));
-    }
+  socket.on('getLocationDetails', (zipcode) => {
+    io.to(socket.id).emit('sentLocationDetails', generateLocationDetails(zipcode));
   });
 });
 
