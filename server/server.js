@@ -15,9 +15,10 @@ io.on('connection', (socket) => {
   socket.on('getLocationDetails', (zipcode) => {
     generateLocationDetails(zipcode)
       .then(
-        
-      )
-    io.to(socket.id).emit('sentLocationDetails', );
+        (locationData) => {
+          io.to(socket.id).emit('sentLocationDetails', locationData);
+        }
+      );
   });
 });
 
